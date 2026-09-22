@@ -1,11 +1,13 @@
-<script setup></script>
+<script setup>
+import { RouterView } from 'vue-router'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <TheHeader />
+  <main>
+    <RouterView />
+  </main>
+  <TheFooter />
 </template>
-
-<style scoped></style>
