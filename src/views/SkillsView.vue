@@ -16,9 +16,34 @@ const skills = [
     description: 'The powerhouse of interactivity. I use JavaScript to create dynamic, responsive user experiences with clean, efficient code and modern ES6+ syntax.'
   },
   {
+    logo: '💚',
+    name: 'Vue.js',
+    description: 'My progressive framework of choice. I build reactive single-page applications using Vue 3\'s composition API, single-file components, and Vue Router for clean, component-driven frontends.'
+  },
+  {
+    logo: '🧱',
+    name: 'Bootstrap',
+    description: 'A responsive CSS framework for rapid UI development. I use Bootstrap\'s grid system and prebuilt components to prototype layouts quickly while keeping designs consistent across devices.'
+  },
+  {
+    logo: '🟢',
+    name: 'Node.js + Express.js',
+    description: 'My backend stack of choice. I use Node.js for server-side JavaScript and Express.js to build fast, lightweight REST APIs with clean routing, middleware, and data flow.'
+  },
+  {
+    logo: '🐘',
+    name: 'PHP',
+    description: 'A reliable server-side language for dynamic web applications. I use PHP to handle form submissions, session management, and database-driven content on full stack projects.'
+  },
+  {
     logo: '🐍',
     name: 'Python',
     description: 'A versatile and powerful language. I use Python for scripting, data analysis, and automation, leveraging its clean syntax and rich ecosystem of libraries.'
+  },
+  {
+    logo: '🐬',
+    name: 'MySQL',
+    description: 'A powerful relational database system. I use MySQL to design schemas, write efficient queries, and persist data reliably for full stack applications.'
   }
 ]
 </script>
