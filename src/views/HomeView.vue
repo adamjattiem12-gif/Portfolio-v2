@@ -1,12 +1,5 @@
 <script setup>
-import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-
-const cardsRef = ref(null)
-
-function scrollToCards() {
-  cardsRef.value?.scrollIntoView({ behavior: 'smooth' })
-}
 </script>
 
 <template>
@@ -22,9 +15,6 @@ function scrollToCards() {
           Currently honing my skills in full stack development and eager to
           contribute to innovative projects.
         </p>
-        <button class="scroll-btn" @click="scrollToCards">
-          <span class="arrow">↓</span>
-        </button>
       </div>
 
       <div class="hero-right">
@@ -33,13 +23,14 @@ function scrollToCards() {
         </div>
       </div>
 
-      <div class="cards-container" ref="cardsRef">
+      <div class="cards-container">
         <div class="info-card">
           <h3 class="card-title">SKILLS</h3>
           <p class="card-text">
-            Proficient in HTML, CSS, JavaScript, and responsive web design.
-            Strong foundation in front-end development with growing expertise
-            in full stack technologies.
+            From HTML and CSS to Vue.js and Node.js, I build websites end to end —
+            front-end interfaces that feel clean and responsive, backed by the
+            servers and databases that make them actually work. Right now I'm
+            sharpening my skills on real projects at Life Choices Academy.
           </p>
           <RouterLink to="/skills" class="card-link">VIEW SKILLS →</RouterLink>
         </div>
