@@ -70,6 +70,11 @@ body {
   color: #007bff;
 }
 
+.nav a.router-link-exact-active {
+  color: #007bff;
+  font-weight: 600;
+}
+
 .menu-toggle {
   display: none;
 }

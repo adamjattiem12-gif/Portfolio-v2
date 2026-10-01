@@ -22,6 +22,30 @@
               <td>April 2026 - September 2026</td>
               <td>6 months</td>
             </tr>
+            <tr>
+              <td class="institution-cell"><a href="https://www.credly.com/badges/cd2bc1b9-5359-41f2-bf49-7bd1b87c09fb/public_url" target="_blank" rel="noopener noreferrer">Introduction to Data Science</a></td>
+              <td>None</td>
+              <td>April 2026 - September 2026</td>
+              <td>6 months</td>
+            </tr>
+            <tr>
+              <td class="institution-cell"><a href="https://www.credly.com/badges/b436120d-233d-4057-8e5e-eb0761f9d53a/public_url" target="_blank" rel="noopener noreferrer">Introduction to Cybersecurity</a></td>
+              <td>None</td>
+              <td>April 2026 - September 2026</td>
+              <td>6 months</td>
+            </tr>
+            <tr>
+              <td class="institution-cell">Higher Certificate in Islamic Studies</td>
+              <td>5</td>
+              <td>January 2025 - December 2025</td>
+              <td>1 year</td>
+            </tr>
+            <tr>
+              <td class="institution-cell">NSC Diploma (High School)</td>
+              <td>4</td>
+              <td>January 2022 - December 2024</td>
+              <td>3 years</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -95,6 +119,15 @@
 .education-table .institution-cell {
   color: #007bff;
   font-weight: 600;
+}
+.education-table .institution-cell a {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.education-table .institution-cell a:hover {
+  text-decoration: underline;
 }
 @media (max-width: 768px) {
   .education-table th,
