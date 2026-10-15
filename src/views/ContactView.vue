@@ -1,29 +1,30 @@
 <template>
-  <section class="contact-section">
+  <section id="contact" class="section contact-section">
     <div class="container">
-      <div class="contact-header">
-        <h1>Get in <span class="highlight">Touch</span></h1>
-        <p>Feel free to reach out with any questions or opportunities</p>
-      </div>
-      <div class="contact-content">
+      <span class="kicker">Let's connect</span>
+      <h2>Get in touch</h2>
+      <p>I'm always interested in learning, collaborating and exploring opportunities to build meaningful software. Drop me a message below.</p>
+      <div class="form-panel">
         <form class="contact-form" action="https://formspree.io/f/mgoqgngy" method="POST">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          <div class="name-row">
+            <div class="form-group">
+              <label for="name">Name <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" type="text" required autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="surname">Surname <span aria-hidden="true">*</span></label>
+              <input id="surname" name="surname" type="text" required autocomplete="family-name">
+            </div>
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Subject of your message" required>
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" required autocomplete="email">
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+            <textarea id="message" name="message" rows="5"></textarea>
           </div>
-          <button type="submit" class="submit-btn">Send Message</button>
+          <button type="submit" class="submit-btn">Submit</button>
         </form>
       </div>
     </div>
@@ -31,95 +32,22 @@
 </template>
 
 <style scoped>
-.contact-section {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
-  min-height: 100vh;
-}
-.contact-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-.contact-header h1 {
-  font-size: 48px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 15px;
-}
-.contact-header p {
-  font-size: 16px;
-  color: #a0a0a0;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.contact-content {
-  max-width: 700px;
-  margin: 0 auto;
-}
-.contact-form {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 40px;
-}
-.form-group {
-  margin-bottom: 25px;
-  display: flex;
-  flex-direction: column;
-}
-.form-group label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.form-group input,
-.form-group textarea {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 12px 15px;
-  font-size: 14px;
-  color: #fff;
-  font-family: inherit;
-  transition: all 0.3s ease;
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #666;
-}
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  background-color: rgba(0, 123, 255, 0.1);
-  border-color: #007bff;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
-}
-.form-group textarea {
-  min-height: 150px;
-  resize: vertical;
-}
-.submit-btn {
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(135deg, #007bff 0%, #0056cc 100%);
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 123, 255, 0.3);
-}
-.submit-btn:active {
-  transform: translateY(0);
-}
+.contact-section { background: linear-gradient(180deg, #111725, #111a2b); }
+.contact-section .container { max-width: 660px; }
+.contact-section .kicker { font-size: 12px; color: #5aa0ff; }
+.contact-section h2 { font-size: clamp(30px, 4vw, 48px); }
+.contact-section p { margin: 0 0 30px; color: #a9b6cb; font-size: 16px; line-height: 1.7; }
+.form-panel { width: 100%; border: 1px solid rgba(115, 146, 200, .22); border-radius: 10px; padding: 24px; background: #151e2f; }
+.contact-form { width: 100%; margin: 0; }
+.name-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.form-group { min-width: 0; margin: 0 0 17px; }
+.form-group label { display: block; margin: 0 0 8px; color: #f1f5fd; font-size: 14px; font-weight: 700; line-height: 1.4; }
+.form-group label span { color: #22d3ee; }
+.form-group input, .form-group textarea { display: block; width: 100%; max-width: 100%; background: #0f1626; color: #f8faff; border: 1px solid #3a4f78; border-radius: 6px; font-size: 14px; line-height: 1.5; padding: 12px 14px; box-shadow: none; }
+.form-group textarea { min-height: 140px; resize: vertical; }
+.form-group input { height: 40px; }
+.form-group input:focus, .form-group textarea:focus { border-color: #3b82f6; outline: 2px solid rgba(37, 99, 235, .25); }
+.submit-btn { background: #2563eb; color: #fff; border: 0; border-radius: 6px; font-size: 14px; font-weight: 800; line-height: 1; min-height: 46px; padding: 0 25px; }
+.submit-btn:hover { background: #3b82f6; }
+@media (max-width: 740px) { .name-row { grid-template-columns: minmax(0, 1fr); } }
 </style>

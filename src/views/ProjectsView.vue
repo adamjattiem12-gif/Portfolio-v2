@@ -1,310 +1,153 @@
 <script setup>
-import { reactive } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
+import { projects } from '@/data/projects'
 
-const projects = [
-  {
-    title: 'FoodBoxx — Module 3 Core Project',
-    image: '/foodboxx.png',
-    description:
-      'FoodBoxx is our live, deployed capstone project from YouthCode\'s full-stack development programme at Life Choices Academy. I served as Project Manager and Backend Engineer, leading a four-person team while building the backend. I managed the project charter, milestones, delivery deadlines, frontend and backend integration, dependencies, and risks, while also engineering Node.js and Express.js server logic with secure authentication and session management. I designed MySQL schemas for Customers, Products, and Orders, built payment and checkout workflows, and developed RESTful APIs for cart state, order tracking, and accounts. Balancing technical problem-solving with team leadership was my biggest challenge, and it taught me how much successful software depends on both good code and good collaboration.',
-    tech: 'HTML5 • CSS3 • ES6+ JavaScript • Node.js • Express.js • MySQL • Figma',
-    team: 'Me: Project Manager & Backend Lead. Caleb Asia (Frontend Lead), Sisamila Sigabi (Frontend Development), and Michaela Maart (QA & Testing)',
-    links: [
-      { label: 'Live Deployment', url: 'https://lnkd.in/dvPCaKPU' },
-      { label: 'Figma',           url: 'https://lnkd.in/dsAiy6BS' },
-      { label: 'GitHub',          url: 'https://lnkd.in/d7HuyAKF' }
-    ]
-  },
-  {
-    title: 'Market Scraper Dashboard — Agile Sprint Project',
-    image: '/market-pulse.png',
-    description:
-      'A full-stack web scraping dashboard built over a 4-week Agile sprint. I engineered the backend scraping layer with Flask — designing the data pipelines that pull real-time market data from multiple sources (WebScraper.io and CoinPaprika) and feed it into a Vue.js frontend. My work covered request routing, HTML parsing, and transforming raw scraped pages into clean, structured datasets the frontend could consume. The biggest technical win was getting the scrapers to run reliably without timing out — rate limiting, error handling, and delivery timing were what kept the whole product stable. Real-world data is messy, and I learned that the 20% of work spent on edge cases delivered 80% of our reliability.',
-    tech: 'Python • Flask • Vue.js • Web Scraping • REST APIs • Agile • Scrum',
-    team: 'Adam Jattiem (Backend Scrapers), Ihtishaam Johnson (Team Lead), Owam Gobingca (Scrum Master), Azhar Manie (QA), Zaarah Okkers (Backend API), Purrity Gwabeni (Backend Storage), Caleb Asia (Frontend Dashboard), Chad Gys (Frontend Features), Likona Mkhatshana (Frontend Three.js)',
-    links: [
-      { label: 'Live Demo', url: 'https://lnkd.in/d_8W5ZbE' },
-      { label: 'GitHub',    url: 'https://lnkd.in/dzn3hmHR' }
-    ]
-  },
-  {
-    title: 'ModernTech HR Portal',
-    image: '/moderntech.jpg',
-    description:
-      'A multi-page HR Portal built as a group project at Life Choices Academy — YouthCode. The goal was to design an Employee Management System that unifies core HR functions — employee records, payroll, and time-off management — into a single, functional web application. My role: I built and maintained the Time Off page, structuring its front-end logic, correcting data fetch paths so it could pull properly from our shared JSON data files, and resolving a number of Git merge conflicts across branches, including a tricky case-sensitivity conflict that took real debugging to track down. It reinforced that version control is as much a skill to build as the code itself.',
-    tech: 'HTML • CSS • JavaScript • JSON • Git • GitHub',
-    team: 'Khaalid Hattas, Lategan, Lisekho Smith & Lerato Yapi',
-    links: [
-      { label: 'Live Site', url: 'https://lnkd.in/dDuJWb9x' },
-      { label: 'GitHub',    url: 'https://lnkd.in/djeZRueK' },
-      { label: 'Figma',     url: 'https://lnkd.in/dXZAwGsb' }
-    ]
-  },
-  {
-    title: 'TutorLink — Startup Launch Challenge',
-    image: '/tutorlink.jpg',
-    description:
-      'A full startup website built from scratch as part of the YouthCode Startup Launch Challenge at Life Choices Academy. Working in a team of five, we moved through the full Software Development Life Cycle — from problem definition and Figma wireframes, through development on individual GitHub branches, to final deployment. Each member owned specific pages and raised pull requests for review before merging into main. Our biggest challenge was merge conflicts when combining everyone\'s work; we solved it by clearly labelling code by page, which made changes easy to track and resolve. This project taught us more about shared codebases than any individual assignment could.',
-    tech: 'HTML • CSS • JavaScript • Figma • GitHub • SDLC',
-    team: 'Nikita Muller, Angela Solomons, Aphiwe Lukho Bija, Rushin Presence & Adam Jattiem',
-    links: [
-      { label: 'GitHub',    url: 'https://lnkd.in/duxcNdPK' },
-      { label: 'Figma',     url: 'https://lnkd.in/ddQNef3Z' },
-      { label: 'Live Site', url: 'https://lnkd.in/dwrmWvVn' }
-    ]
-  },
-  {
-    title: 'Personal Portfolio Website — HTML & CSS',
-    image: '/portfolio.png',
-    description:
-      'I created a personal portfolio website as part of my web development learning journey at Life Choices Academy. Across six customized pages — Home, About, Skills, Education, Projects, and Contact — I built a digital home that introduces who I am, showcases my skills, and highlights what I have learned so far. This project helped me practise HTML and CSS concepts including semantic structure, links, images, lists, forms, the box model, Flexbox, responsive design, CSS Grid, and clean layout design. I also displayed my Python Mini Toolkit project in the portfolio. One challenge was managing card sizing and spacing on smaller screens, which I solved by using responsive design, CSS Grid, and browser developer tools to balance padding and margins.',
-    tech: 'HTML • CSS • Responsive Design • CSS Grid • Flexbox',
-    links: [
-      { label: 'GitHub',    url: 'https://lnkd.in/dd4kePm2' },
-      { label: 'Live Site', url: 'https://lnkd.in/d2GTUnzW' }
-    ]
-  },
-  {
-    title: 'Python Mini Toolkit',
-    description:
-      'A comprehensive Python application featuring three practical tools: a Grade Calculator for computing student averages, a Number Guessing Game for interactive fun, and a Budget Tracker for personal finance management. Demonstrates proficiency in Python programming, user input handling, and data processing.',
-    tech: 'Python • Data Processing • User Interface',
-    links: [
-      { label: 'GitHub', url: 'https://github.com/adamjattiem12-gif/Python-mini-toolkit.git' }
-    ]
-  }
-]
-  const expanded = reactive({})
+const expanded = reactive({})
+const teamExpanded = reactive({})
+const currentIndex = ref(0)
+const isMobile = ref(false)
+const viewport = ref(null)
+const viewportWidth = ref(0)
+const visibleCount = computed(() => isMobile.value ? 1 : 2)
+const maxIndex = computed(() => projects.length - visibleCount.value)
+const offset = computed(() => currentIndex.value * (viewportWidth.value + (isMobile.value ? 14 : 22)) / visibleCount.value)
+const counter = computed(() => {
+  const first = currentIndex.value + 1
+  return `${first}${isMobile.value ? '' : `–${first + 1}`} of ${projects.length}`
+})
+let mediaQuery
+let resizeObserver
 
-  function toggleExpand(title) {
-    expanded[title] = !expanded[title]
-  }
-  </script>
+function updateLayout() {
+  isMobile.value = mediaQuery.matches
+  currentIndex.value = Math.min(currentIndex.value, maxIndex.value)
+  viewportWidth.value = viewport.value.clientWidth
+}
 
-  <template>
-    <section class="projects-section">
-      <div class="container">
-        <div class="projects-header">
-          <h1>My <span class="highlight">Projects</span></h1>
-          <p>Websites and applications demonstrating my growth as a developer</p>
+function move(direction) {
+  currentIndex.value = Math.min(maxIndex.value, Math.max(0, currentIndex.value + direction))
+}
+
+onMounted(() => {
+  mediaQuery = window.matchMedia('(max-width: 740px)')
+  mediaQuery.addEventListener('change', updateLayout)
+  resizeObserver = new ResizeObserver(updateLayout)
+  resizeObserver.observe(viewport.value)
+  updateLayout()
+})
+
+onUnmounted(() => {
+  mediaQuery?.removeEventListener('change', updateLayout)
+  resizeObserver?.disconnect()
+})
+</script>
+
+<template>
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="projects-header">
+        <div>
+          <span class="kicker">Selected work</span>
+          <h2>Projects I've worked on.</h2>
         </div>
-
-        <div class="projects-list">
-          <div v-for="project in projects" :key="project.title" class="project-card">
-            <div v-if="project.image" class="project-image-wrap">
-              <img
-                :src="project.image"
-                :alt="`Screenshot of ${project.title}`"
-                class="project-image"
-              />
-            </div>
-
-            <h2 class="project-title">{{ project.title }}</h2>
-
-            <p
-              v-if="expanded[project.title]"
-              class="project-description"
-            >
-              {{ project.description }}
-            </p>
-
-            <span class="project-tech">{{ project.tech }}</span>
-
-            <p v-if="project.team" class="project-team">
-              <strong>Team:</strong> {{ project.team }}
-            </p>
-
-            <button
-              type="button"
-              class="read-more-btn"
-              @click="toggleExpand(project.title)"
-            >
-              {{ expanded[project.title] ? 'Show Less ↑' : 'Read More ↓' }}
-            </button>
-
-            <div class="project-links">
-              <a
-                v-for="link in project.links"
-                :key="link.url"
-                :href="link.url"
-                class="project-link"
-                target="_blank"
-                rel="noopener"
-              >
-                {{ link.label }} →
-              </a>
-            </div>
-          </div>
+        <div class="carousel-controls" role="group" aria-label="Project carousel controls">
+          <button type="button" class="carousel-arrow" aria-label="Previous projects" :disabled="currentIndex === 0" @click="move(-1)">&larr;</button>
+          <span class="carousel-count" aria-live="polite">{{ counter }}</span>
+          <button type="button" class="carousel-arrow" aria-label="Next projects" :disabled="currentIndex === maxIndex" @click="move(1)">&rarr;</button>
         </div>
       </div>
-    </section>
-  </template>
+      <div ref="viewport" class="carousel-viewport" role="region" aria-label="Projects carousel" aria-roledescription="carousel">
+        <div class="projects-list" :style="{ transform: `translateX(-${offset}px)` }">
+          <article v-for="(project, index) in projects" :key="project.id" class="project-card"
+            :inert="index < currentIndex || index >= currentIndex + visibleCount"
+            :aria-hidden="index < currentIndex || index >= currentIndex + visibleCount"
+            :aria-label="project.title">
+            <img :src="project.image" :alt="project.alt" class="project-image" loading="lazy">
+            <span class="project-type">{{ project.type }}</span>
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-intro">{{ project.intro }}</p>
+            <div class="project-details">
+              <button type="button" class="read-more-btn" :aria-expanded="!!expanded[project.id]" :aria-controls="`${project.id}-description`" @click="expanded[project.id] = !expanded[project.id]">
+                {{ expanded[project.id] ? 'Show Less \u2191' : 'Read More \u2193' }}
+              </button>
+              <div v-show="expanded[project.id]" :id="`${project.id}-description`" class="project-description">
+                <p v-for="paragraph in project.description" :key="paragraph">{{ paragraph }}</p>
+              </div>
+            </div>
+            <div class="project-tech" aria-label="Technologies">
+              <span v-for="tech in project.tech" :key="tech">{{ tech }}</span>
+            </div>
+            <div v-if="project.team" class="project-team" :class="{ 'team-expanded': teamExpanded[project.id] }">
+              <div class="team-heading">
+                <strong>Team</strong>
+                <button type="button" class="team-toggle" :aria-expanded="!!teamExpanded[project.id]" :aria-controls="`${project.id}-team`"
+                  :aria-label="teamExpanded[project.id] ? 'Show less about the project team' : 'Read more about the project team'"
+                  @click="teamExpanded[project.id] = !teamExpanded[project.id]">
+                  {{ teamExpanded[project.id] ? 'Show Less \u2191' : 'Read More \u2193' }}
+                </button>
+              </div>
+              <div :id="`${project.id}-team`" class="team-members"><em>{{ project.team }}</em></div>
+            </div>
+            <div class="project-links">
+              <a v-for="link in project.links" :key="link.url" :href="link.url" class="project-link" target="_blank" rel="noopener noreferrer">
+                {{ link.label }} <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
 
 <style scoped>
-  .projects-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
-    min-height: 100vh;
-  }
-
-  .projects-header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-
-  .projects-header h1 {
-    font-size: 48px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 15px;
-  }
-
-  .projects-header p {
-    font-size: 16px;
-    color: #a0a0a0;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    width: 100%;
-    max-width: 780px;
-    margin: 0 auto;
-  }
-
-  .project-card {
-    width: 100%;
-    min-width: 0;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 28px;
-    transition: background-color 0.3s ease, border-color 0.3s ease,
-          box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    overflow-wrap: anywhere;
-  }
-
-  .project-card:hover {
-    background-color: rgba(0, 123, 255, 0.08);
-    border-color: #007bff;
-    box-shadow: 0 20px 40px rgba(0, 123, 255, 0.15);
-  }
-
-  /* Screenshot image */
-  .project-image-wrap {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-
-  .project-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  .project-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 14px;
-  }
-
-  /* Description is rendered only after the card is expanded. */
-  .project-description {
-    font-size: 15px;
-    color: #a0a0a0;
-    line-height: 1.8;
-    margin-bottom: 20px;
-  }
-
-  .project-tech {
-    font-size: 13px;
-    color: #007bff;
-    font-weight: 600;
-    display: inline-block;
-  }
-
-  .project-team {
-    font-size: 12px;
-    color: #a0a0a0;
-    font-style: italic;
-    line-height: 1.6;
-    margin: 12px 0 0 0;
-  }
-
-  .project-team strong {
-    color: #fff;
-    font-style: normal;
-    font-weight: 600;
-  }
-
-  /* Read More / Show Less button */
-  .read-more-btn {
-    background: transparent;
-    border: none;
-    color: #007bff;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0;
-    margin: 16px 0 0 0;
-    text-align: left;
-    font-family: inherit;
-    transition: color 0.3s ease;
-    width: fit-content;
-  }
-
-  .read-more-btn:hover {
-    color: #4da3ff;
-    text-decoration: underline;
-  }
-
-  .project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 24px;
-  }
-
-  .project-link {
-    font-size: 13px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    padding: 10px 18px;
-    background-color: rgba(0, 123, 255, 0.2);
-    border: 1px solid #007bff;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-  }
-
-  .project-link:hover {
-    background-color: #007bff;
-    color: #fff;
-    transform: translateX(3px);
-  }
-
-  @media (max-width: 768px) {
-    .project-card {
-      padding: 24px 20px;
-    }
-
-    .project-title {
-      font-size: 20px;
-    }
-
-    .project-description {
-      font-size: 14px;
-    }
-  }
+.projects-header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 27px; }
+.projects-header h2 { margin-bottom: 0; }
+.carousel-controls { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.carousel-count { min-width: 66px; text-align: center; font-size: 12px; color: #9ba8bc; font-weight: 700; }
+.carousel-arrow { appearance: none; background: #152744; border: 1px solid #2c5aa8; color: #f8faff; border-radius: 8px; width: 44px; height: 44px; display: inline-flex; justify-content: center; align-items: center; font-size: 23px; font-weight: 500; line-height: 1; padding: 15px 30px; transition: background .2s; }
+.carousel-arrow:hover:not(:disabled), .carousel-arrow:focus-visible { background: #2563eb; }
+.carousel-arrow:disabled { opacity: .35; cursor: not-allowed; }
+.carousel-viewport { width: 100%; overflow: hidden; }
+.projects-list { display: flex; gap: 22px; align-items: stretch; margin-top: 29px; transition: transform .4s ease; }
+.project-card { flex: 0 0 calc((100% - 22px) / 2); min-width: 0; border: 1px solid rgba(57, 108, 215, .27); border-radius: 10px; padding: 15px 18px; background: linear-gradient(135deg, #182337, #141d2d); display: flex; flex-direction: column; }
+.project-image { display: block; width: 100%; height: clamp(115px, 15vw, 185px); object-fit: cover; object-position: center; border: 1px solid rgba(125, 160, 220, .25); margin: 0 0 13px; border-radius: 8px; }
+.project-type { font-size: 9px; color: #4190ff; font-weight: 800; letter-spacing: .08em; }
+.project-title { font-size: clamp(17px, 1.6vw, 22px); line-height: 1.2; font-weight: 600; letter-spacing: -.035em; margin: 7px 0 9px; color: #f7faff; }
+.project-card .project-intro { font-size: 12px; line-height: 1.48; margin: 0 0 7px; color: #aab9d1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.read-more-btn { display: inline-flex; align-items: center; color: #54a2ff; font-size: 12px; font-weight: 800; background: none; border: 0; padding: 0; margin: 1px 0 8px; line-height: inherit; }
+.project-description p { font-size: 12px; line-height: 1.55; margin: 0 0 10px; }
+.project-tech { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 7px 0 9px; }
+.project-tech span { color: #4994ff; font-size: 10px; font-weight: 750; }
+.project-tech span:not(:last-child)::after { content: '\2022'; padding-left: 6px; color: #5287da; }
+.project-team { margin: 0 0 10px; color: #aab9d1; font-size: 11px; line-height: 1.45; }
+.team-heading { display: inline; }
+.team-heading strong { color: #e9f1ff; }
+.team-heading strong::after { content: ':'; }
+.team-members { display: inline; }
+.team-toggle { display: none; }
+.project-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+.project-link { display: inline-flex; align-items: center; gap: 12px; border-radius: 6px; border: 1px solid #2563eb; background: #10376b; color: #fff; font-weight: 800; font-size: 11px; padding: 8px 12px; transition: background .2s, transform .2s; }
+.project-link:hover { background: #2563eb; transform: translateY(-2px); }
+@media (max-width: 921px) { .carousel-arrow { padding: 14px 28px; } }
+@media (max-width: 740px) {
+  .projects-list { gap: 14px; }
+  .project-card { flex-basis: 100%; }
+  .project-team { margin-bottom: 12px; }
+  .team-heading { display: flex; align-items: center; gap: 12px; }
+  .team-toggle { display: inline-flex; align-items: center; border: 0; background: none; padding: 3px 0; font: inherit; font-weight: 800; font-size: 11px; color: #54a2ff; }
+  .team-members { display: none; line-height: 1.6; padding-top: 7px; }
+  .team-expanded .team-members { display: block; }
+}
+@media (max-width: 640px) {
+  .projects-header { align-items: center; gap: 10px; flex-wrap: wrap; }
+  .carousel-controls { margin-left: auto; }
+  .carousel-arrow { width: 37px; height: 37px; }
+  .project-card { padding: 10px; }
+  .project-image { height: 100px; }
+  .project-title { font-size: 14px; overflow-wrap: anywhere; }
+  .project-tech span { font-size: 9px; }
+  .project-link { padding: 7px 9px; font-size: 10px; }
+}
+@media (max-width: 544px) { .carousel-arrow { padding: 12px 24px; } }
 </style>

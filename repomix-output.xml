@@ -1,0 +1,971 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+public/
+  wordpress/
+    foodboxx.png
+    market-pulse.png
+    moderntech.png
+    portfolio.png
+    profile.jpeg
+    tutorlink.png
+  favicon.ico
+  foodboxx.png
+  market-pulse.png
+  moderntech.jpg
+  portfolio.png
+  profile.jpg
+  tutorlink.jpg
+src/
+  assets/
+    main.css
+  components/
+    TheFooter.vue
+    TheHeader.vue
+  data/
+    projects.js
+  router/
+    index.js
+  views/
+    AboutView.vue
+    ContactView.vue
+    EducationView.vue
+    HomeView.vue
+    ProjectsView.vue
+    SkillsView.vue
+  App.vue
+  main.js
+.gitignore
+index.html
+jsconfig.json
+package.json
+README.md
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="src/data/projects.js">
+// Project content and order from the WordPress portfolio.
+export const projects = [
+  {
+    "id": "foodboxx",
+    "title": "FoodBoxx — Module 3 Core Project",
+    "image": "/wordpress/foodboxx.png",
+    "alt": "FoodBoxx meal ordering website homepage with navy background and orange calls to action",
+    "type": "TEAM PROJECT • MODULE 3 CORE",
+    "intro": "A deployed full-stack meal ordering application built by our four-person YouthCode team. I served as Project Manager and Backend Lead, developing Node.js, Express and MySQL functionality.",
+    "description": [
+      "FoodBoxx is our live, deployed capstone project from YouthCode's full-stack development programme at Life Choices Academy. I served as Project Manager and Backend Engineer, leading a four-person team while building the backend.",
+      "I managed the project charter, milestones, delivery deadlines, frontend and backend integration, dependencies, and risks, while also engineering Node.js and Express.js server logic with secure authentication and session management.",
+      "I designed MySQL schemas for Customers, Products, and Orders, built payment and checkout workflows, and developed RESTful APIs for cart state, order tracking, and accounts. Balancing technical problem-solving with team leadership was my biggest challenge, and it taught me how much successful software depends on both good code and good collaboration."
+    ],
+    "tech": [
+      "HTML5",
+      "CSS3",
+      "ES6+",
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "MySQL",
+      "Figma"
+    ],
+    "team": "Me: Project Manager & Backend Lead; Caleb Asia (Frontend Lead), Sisamila Sigabi (Frontend Development), and Michaela Maart (QA & Testing)",
+    "links": [
+      {
+        "label": "Live Demo",
+        "url": "https://group-10-module-3-core-project-production-30a0.up.railway.app/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/Caleb-Asia/Group-10---Module-3-Core-Project"
+      }
+    ]
+  },
+  {
+    "id": "market-pulse",
+    "title": "Market Scraper Dashboard — Agile Sprint Project",
+    "image": "/wordpress/market-pulse.png",
+    "alt": "Market Pulse dashboard showing market scraping sources and retail and digital asset statistics",
+    "type": "TEAM PROJECT • AGILE SPRINT",
+    "intro": "A full-stack market data scraping dashboard developed during a four-week Agile sprint. I built the Flask backend scraping layer and data pipelines for a Vue.js frontend.",
+    "description": [
+      "A full-stack web scraping dashboard built over a 4-week Agile sprint. I engineered the backend scraping layer with Flask — designing the data pipelines that pull real-time market data from multiple sources (WebScraper.io and CoinPaprika) and feed it into a Vue.js frontend.",
+      "My work covered request routing, HTML parsing, and transforming raw scraped pages into clean, structured datasets the frontend could consume.",
+      "The biggest technical win was getting the scrapers to run reliably without timing out — rate limiting, error handling, and delivery timing were what kept the whole product stable. Real-world data is messy, and I learned that the 20% of work spent on edge cases delivered 80% of our reliability."
+    ],
+    "tech": [
+      "Python",
+      "Flask",
+      "Vue.js",
+      "Web Scraping",
+      "REST APIs",
+      "Agile",
+      "Scrum"
+    ],
+    "team": "Adam Jattiem (Backend Scrapers), Ihtishaam Johnson (Team Lead), Owam Gobingca (Scrum Master), Azhar Manie (QA), Zaarah Okkers (Backend API), Purrity Gwabeni (Backend Storage), Caleb Asia (Frontend Dashboard), Chad Gys (Frontend Features), Likona Mkhatshana (Frontend Three.js)",
+    "links": [
+      {
+        "label": "Live Demo",
+        "url": "https://market-pulse-11gq.onrender.com/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adamjattiem12-gif/-Flask-Web-Scraping-Dashboard"
+      }
+    ]
+  },
+  {
+    "id": "moderntech",
+    "title": "ModernTech HR Portal",
+    "image": "/wordpress/moderntech.png",
+    "alt": "ModernTech HR Portal dashboard showing employee, payroll, leave and attendance statistics",
+    "type": "TEAM PROJECT • HR MANAGEMENT SYSTEM",
+    "intro": "A multi-page employee management portal built as a YouthCode team project at Life Choices Academy, covering employee records, payroll and time-off management.",
+    "description": [
+      "A multi-page HR Portal built as a group project at Life Choices Academy — YouthCode. The goal was to design an Employee Management System that unifies core HR functions — employee records, payroll, and time-off management — into a single, functional web application.",
+      "My role: I built and maintained the Time Off page, structuring its front-end logic, correcting data fetch paths so it could pull properly from our shared JSON data files, and resolving a number of Git merge conflicts across branches, including a tricky case-sensitivity conflict that took real debugging to track down.",
+      "It reinforced that version control is as much a skill to build as the code itself."
+    ],
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "JSON",
+      "Git",
+      "GitHub"
+    ],
+    "team": "Khaalid Hattas, Lategan, Lisekho Smith & Lerato Yapi",
+    "links": [
+      {
+        "label": "Live Demo",
+        "url": "https://moderntech-update.netlify.app/indexdash.html"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/leratoyapi/moderntech-hr-portal"
+      }
+    ]
+  },
+  {
+    "id": "tutorlink",
+    "title": "TutorLink — Startup Launch Challenge",
+    "image": "/wordpress/tutorlink.png",
+    "alt": "TutorLink startup website homepage with green hero and team photograph",
+    "type": "TEAM PROJECT • STARTUP LAUNCH CHALLENGE",
+    "intro": "A full startup website created in a team of five during the YouthCode Startup Launch Challenge at Life Choices Academy.",
+    "description": [
+      "A full startup website built from scratch as part of the YouthCode Startup Launch Challenge at Life Choices Academy. Working in a team of five, we moved through the full Software Development Life Cycle — from problem definition and Figma wireframes, through development on individual GitHub branches, to final deployment.",
+      "Each member owned specific pages and raised pull requests for review before merging into main. Our biggest challenge was merge conflicts when combining everyone's work; we solved it by clearly labelling code by page, making changes easy to track and resolve. This project taught us more about shared codebases than any individual assignment could."
+    ],
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Figma",
+      "GitHub",
+      "SDLC"
+    ],
+    "team": "Nikita Muller, Angela Solomons, Aphiwe Lukho Bija, Rushin Presence & Adam Jattiem",
+    "links": [
+      {
+        "label": "Live Demo",
+        "url": "https://nikitamullerr.github.io/HTML_CSS_JavaScript_Showcase/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/nikitamullerr/HTML_CSS_JavaScript_Showcase"
+      }
+    ]
+  },
+  {
+    "id": "portfolio",
+    "title": "Personal Portfolio Website — HTML & CSS",
+    "image": "/wordpress/portfolio.png",
+    "alt": "Screenshot of the HTML and CSS personal portfolio homepage",
+    "type": "FEATURED PROJECT • HTML & CSS",
+    "intro": "A six-page personal portfolio website I created during my web development journey at Life Choices Academy.",
+    "description": [
+      "I created a personal portfolio website as part of my web development learning journey at Life Choices Academy. Across six customized pages — Home, About, Skills, Education, Projects, and Contact — I built a digital home that introduces who I am, showcases my skills, and highlights what I have learned so far.",
+      "This project helped me practise HTML and CSS concepts including semantic structure, links, images, lists, forms, the box model, Flexbox, responsive design, CSS Grid, and clean layout design. I also displayed my Python Mini Toolkit project in the portfolio.",
+      "One challenge was managing card sizing and spacing on smaller screens, which I solved by using responsive design, CSS Grid, and browser developer tools to balance padding and margins."
+    ],
+    "tech": [
+      "HTML",
+      "CSS",
+      "Responsive Design",
+      "CSS Grid",
+      "Flexbox"
+    ],
+    "links": [
+      {
+        "label": "Live Demo",
+        "url": "https://adamjattiem12-gif.github.io/My-Portfolio/"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/adamjattiem12-gif/My-Portfolio"
+      }
+    ]
+  }
+]
+</file>
+
+<file path="src/components/TheFooter.vue">
+<template>
+  <footer class="footer">
+    <div class="container">
+      <span>&copy; 2026 Adam Jattiem</span>
+      <a href="#top">Back to top &uarr;</a>
+    </div>
+  </footer>
+</template>
+
+<style scoped>
+.footer { border-top: 1px solid var(--line); padding: 27px 0; font-size: 12px; color: #7f8da3; }
+.footer .container { display: flex; justify-content: space-between; gap: 20px; }
+.footer a { color: #b4c9ef; }
+@media (max-width: 390px) { .footer .container { flex-direction: column; } }
+</style>
+</file>
+
+<file path="src/components/TheHeader.vue">
+<script setup>
+import { ref } from 'vue'
+
+const mobileMenu = ref(null)
+const links = [
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'certifications', label: 'Certifications' },
+  { id: 'contact', label: 'Contact' },
+]
+
+function closeMenu() {
+  if (mobileMenu.value) mobileMenu.value.open = false
+}
+</script>
+
+<template>
+  <header class="header">
+    <div class="container header-content">
+      <a class="logo" href="#top" aria-label="Adam Jattiem, back to top" @click="closeMenu">ADAM <strong>JATTIEM</strong></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a v-for="link in links" :key="link.id" :href="`#${link.id}`" :class="{ 'nav-cta': link.id === 'contact' }">{{ link.label }}</a>
+      </nav>
+      <details ref="mobileMenu" class="mobile-nav" @keydown.esc="closeMenu">
+        <summary aria-label="Open navigation menu" aria-controls="mobile-menu">&#9776;</summary>
+        <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+          <a v-for="link in links" :key="link.id" :href="`#${link.id}`" @click="closeMenu">{{ link.label }}</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+</template>
+
+<style scoped>
+.header { height: 77px; border-bottom: 1px solid var(--line); background: var(--background); position: sticky; top: 0; z-index: 1000; }
+.header-content { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+.logo { font-size: 18px; font-weight: 800; letter-spacing: -.65px; color: #f6f8ff; white-space: nowrap; }
+.logo strong { color: #3478fc; font-weight: 800; }
+.nav { display: flex; align-items: center; gap: 32px; }
+.nav a { font-size: 12px; font-weight: 600; color: #ebeff9; transition: color .2s; }
+.nav a:hover, .nav a:focus-visible { color: #60a5fa; }
+.nav .nav-cta { color: #fff; background: #2766eb; border-radius: 6px; padding: 11px 19px; box-shadow: 0 5px 24px rgba(37, 99, 235, .2); }
+.nav .nav-cta:hover { background: #377afa; color: #fff; }
+.mobile-nav { display: none; }
+@media (max-width: 950px) { .nav { gap: 18px; } }
+@media (max-width: 740px) {
+  .header { height: 68px; }
+  .nav { display: none; }
+  .mobile-nav { display: block; position: relative; }
+  .mobile-nav summary { display: flex; align-items: center; justify-content: center; width: 42px; height: 40px; cursor: pointer; list-style: none; border: 1px solid #293754; border-radius: 7px; font-size: 21px; color: #f8faff; }
+  .mobile-nav summary::-webkit-details-marker { display: none; }
+  .mobile-menu { position: absolute; right: 0; top: calc(100% + 12px); width: 230px; background: #172137; border: 1px solid #314361; padding: 13px; border-radius: 10px; box-shadow: 0 14px 50px rgba(0, 0, 0, .3); display: flex; flex-direction: column; gap: 4px; }
+  .mobile-menu a { color: #edf3ff; font-size: 14px; font-weight: 650; padding: 11px 13px; border-radius: 5px; }
+  .mobile-menu a:hover { background: #243553; }
+}
+@media (max-width: 390px) { .logo { font-size: 16px; } }
+</style>
+</file>
+
+<file path="src/views/AboutView.vue">
+<template>
+  <section id="about" class="section">
+    <div class="container">
+      <span class="kicker">About me</span>
+      <h2>Building with purpose.</h2>
+      <p>I'm an aspiring software developer with a particular interest in backend development and solving practical problems through technology. During Life Choices Academy's YouthCode programme, I've worked with JavaScript, Vue.js, Node.js, Express, Python, Flask and databases on collaborative projects. I enjoy building APIs, working with data, troubleshooting complex issues and understanding how complete applications work behind the scenes. Outside of coding, I'm interested in consumer technology, gaming and fitness. These interests keep me curious, encourage me to challenge myself and remind me of the value of consistency and learning. My goal is to begin my career in a backend or full-stack development role, contribute to useful software and continue growing my technical and professional skills. In the long term, I hope to take on greater responsibility, deepen my expertise and build a lasting career in software engineering.</p>
+    </div>
+  </section>
+</template>
+</file>
+
+<file path="src/views/ContactView.vue">
+<template>
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <span class="kicker">Let's connect</span>
+      <h2>Get in touch</h2>
+      <p>I'm always interested in learning, collaborating and exploring opportunities to build meaningful software. Drop me a message below.</p>
+      <div class="form-panel">
+        <form class="contact-form" action="https://formspree.io/f/mgoqgngy" method="POST">
+          <div class="name-row">
+            <div class="form-group">
+              <label for="name">Name <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" type="text" required autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="surname">Surname <span aria-hidden="true">*</span></label>
+              <input id="surname" name="surname" type="text" required autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.contact-section { background: linear-gradient(180deg, #111725, #111a2b); }
+.contact-section .container { max-width: 660px; }
+.contact-section .kicker { font-size: 12px; color: #5aa0ff; }
+.contact-section h2 { font-size: clamp(30px, 4vw, 48px); }
+.contact-section p { margin: 0 0 30px; color: #a9b6cb; font-size: 16px; line-height: 1.7; }
+.form-panel { width: 100%; border: 1px solid rgba(115, 146, 200, .22); border-radius: 10px; padding: 24px; background: #151e2f; }
+.contact-form { width: 100%; margin: 0; }
+.name-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.form-group { min-width: 0; margin: 0 0 17px; }
+.form-group label { display: block; margin: 0 0 8px; color: #f1f5fd; font-size: 14px; font-weight: 700; line-height: 1.4; }
+.form-group label span { color: #22d3ee; }
+.form-group input, .form-group textarea { display: block; width: 100%; max-width: 100%; background: #0f1626; color: #f8faff; border: 1px solid #3a4f78; border-radius: 6px; font-size: 14px; line-height: 1.5; padding: 12px 14px; box-shadow: none; }
+.form-group textarea { min-height: 140px; resize: vertical; }
+.form-group input { height: 40px; }
+.form-group input:focus, .form-group textarea:focus { border-color: #3b82f6; outline: 2px solid rgba(37, 99, 235, .25); }
+.submit-btn { background: #2563eb; color: #fff; border: 0; border-radius: 6px; font-size: 14px; font-weight: 800; line-height: 1; min-height: 46px; padding: 0 25px; }
+.submit-btn:hover { background: #3b82f6; }
+@media (max-width: 740px) { .name-row { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</file>
+
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+.eslintcache
+
+# Cypress
+/cypress/videos/
+/cypress/screenshots/
+
+# Vitest
+__screenshots__/
+
+# Vite
+*.timestamp-*-*.mjs
+</file>
+
+<file path="jsconfig.json">
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
+</file>
+
+<file path="package.json">
+{
+  "name": "portfolio-v2",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.5.42",
+    "vue-router": "^5.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.2.2",
+    "vite-plugin-vue-devtools": "^8.2.1"
+  },
+  "engines": {
+    "node": "^22.18.0 || >=24.12.0"
+  }
+}
+</file>
+
+<file path="vite.config.js">
+import { fileURLToPath, URL } from 'node:url'
+
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueDevTools from 'vite-plugin-vue-devtools'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    vueDevTools(),
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+})
+</file>
+
+<file path="src/assets/main.css">
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --background: #111725;
+  --line: rgba(179, 197, 232, .09);
+  --muted: #96a3b8;
+  color: #f8faff;
+  background: var(--background);
+  font-family: 'Manrope', sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; line-height: 1.65; }
+a { text-decoration: none; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+.container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+.section { padding: 88px 0; border-top: 1px solid var(--line); scroll-margin-top: 76px; }
+.section h2 { font-size: clamp(28px, 3.3vw, 42px); line-height: 1.3; font-weight: 600; letter-spacing: -.045em; margin: 0 0 18px; color: #f8faff; }
+.section .kicker { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .15em; font-weight: 800; color: #3d84fc; margin-bottom: 14px; }
+.section p { color: var(--muted); font-size: 15px; line-height: 1.8; max-width: 730px; margin: 0 0 1.75em; }
+
+@media (max-width: 921px) { body { font-size: 14.592px; } }
+
+@media (max-width: 740px) {
+  .container { padding-left: 22px; padding-right: 22px; }
+  .section { padding: 67px 0; scroll-margin-top: 68px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
+</file>
+
+<file path="src/router/index.js">
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '@/views/HomeView.vue'
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    { path: '/', name: 'home', component: HomeView },
+    // Keep existing URLs useful while presenting every section on one page.
+    ...['skills', 'projects', 'about', 'contact', 'education'].map((section) => ({
+      path: `/${section}`,
+      redirect: { path: '/', hash: `#${section === 'education' ? 'certifications' : section}` },
+    })),
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition
+    if (to.hash) return { el: to.hash }
+    return { top: 0 }
+  },
+})
+
+export default router
+</file>
+
+<file path="src/views/EducationView.vue">
+<template>
+  <section id="certifications" class="section">
+    <div class="container">
+      <span class="kicker">Learning journey</span>
+      <h2>Training &amp; development.</h2>
+      <div class="education-content" role="region" aria-label="Qualifications and training" tabindex="0">
+        <table class="education-table">
+          <thead>
+            <tr>
+              <th scope="col">Qualification</th>
+              <th scope="col">NQF Level</th>
+              <th scope="col">Timeline</th>
+              <th scope="col">Years Studied</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="institution-cell">Full Stack Development at Life Choices Academy</td>
+              <td>None</td>
+              <td>April 2026 – September 2026</td>
+              <td>6 months</td>
+            </tr>
+            <tr>
+              <td class="institution-cell"><a href="https://www.credly.com/badges/cd2bc1b9-5359-41f2-bf49-7bd1b87c09fb/public_url" target="_blank" rel="noopener noreferrer">Introduction to Data Science</a></td>
+              <td>None</td>
+              <td>April 2026 – September 2026</td>
+              <td>6 months</td>
+            </tr>
+            <tr>
+              <td class="institution-cell"><a href="https://www.credly.com/badges/b436120d-233d-4057-8e5e-eb0761f9d53a/public_url" target="_blank" rel="noopener noreferrer">Introduction to Cybersecurity</a></td>
+              <td>None</td>
+              <td>April 2026 – September 2026</td>
+              <td>6 months</td>
+            </tr>
+            <tr>
+              <td class="institution-cell">Higher Certificate in Islamic Studies</td>
+              <td>5</td>
+              <td>January 2025 – December 2025</td>
+              <td>1 year</td>
+            </tr>
+            <tr>
+              <td class="institution-cell">NSC Diploma (High School)</td>
+              <td>4</td>
+              <td>January 2022 – December 2024</td>
+              <td>3 years</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.education-content { width: 100%; overflow-x: auto; margin-top: 30px; border: 1px solid rgba(132, 159, 204, .18); border-radius: 11px; background: #1b2331; }
+.education-table { border-collapse: collapse; width: 100%; min-width: 740px; text-align: left; margin: 0 0 1.5em; }
+.education-table thead { background: #1a3150; }
+.education-table th { padding: 21px 22px; color: #f7faff; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; border-bottom: 2px solid #2872f0; }
+.education-table td { padding: 20px 22px; color: #b5c3d5; font-size: 13px; line-height: 1.5; }
+.education-table .institution-cell { color: #3485ff; font-weight: 700; }
+.institution-cell a { color: inherit; }
+.institution-cell a:hover { text-decoration: underline; }
+.education-table tbody tr:hover { background: rgba(54, 112, 198, .07); }
+@media (max-width: 800px) {
+  .education-table th, .education-table td { padding: 15px 17px; font-size: 12px; }
+  .education-content { margin-top: 23px; }
+}
+</style>
+</file>
+
+<file path="src/views/HomeView.vue">
+<script setup>
+import AboutView from './AboutView.vue'
+import SkillsView from './SkillsView.vue'
+import ProjectsView from './ProjectsView.vue'
+import EducationView from './EducationView.vue'
+import ContactView from './ContactView.vue'
+</script>
+
+<template>
+  <section id="top" class="container hero" aria-label="Introduction">
+    <div class="hero-copy">
+      <span class="eyebrow">FULL-STACK DEVELOPER</span>
+      <h1>Crafting<br><span class="highlight">Scalable<br>Digital</span><br>Experiences.</h1>
+      <p class="hero-description">I build robust web applications with modern technologies. Bridging the gap between beautiful design and technical excellence.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View My Work <span aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-outline" href="#contact">Contact Me</a>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <img class="profile-img" src="/wordpress/profile.jpeg" alt="Portrait of Adam Jattiem" loading="eager" width="768" height="1024">
+    </div>
+  </section>
+  <AboutView />
+  <SkillsView />
+  <ProjectsView />
+  <EducationView />
+  <ContactView />
+</template>
+
+<style scoped>
+.hero { min-height: calc(100svh - 77px); display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 80px; padding-top: 70px; padding-bottom: 74px; scroll-margin-top: 77px; }
+.hero-copy { min-width: 0; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(46, 103, 224, .25); background: #142650; color: #4486f8; padding: 7px 11px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: .11em; line-height: 1; }
+.eyebrow::before { content: ''; height: 7px; width: 7px; border-radius: 50%; background: #2f78ed; }
+.hero h1 { margin: 28px 0 27px; font-size: clamp(51px, 5.35vw, 78px); line-height: 1.115; font-weight: 800; letter-spacing: -.052em; color: #f9fbff; }
+.highlight { color: #3178f3; }
+.hero-description { max-width: 490px; color: #9ba8bc; font-size: 16px; line-height: 1.72; font-weight: 400; margin: 0 0 28px; }
+.hero-actions { display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 6px; font-size: 13px; font-weight: 800; min-height: 48px; padding: 0 23px; transition: transform .2s, background .2s, border .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: #2563eb; color: #fff; box-shadow: 0 10px 24px rgba(37, 99, 235, .13); }
+.btn-primary:hover { background: #377afa; }
+.btn-outline { border: 1px solid #05c9e1; color: #06cce5; background: transparent; }
+.btn-outline:hover { background: rgba(6, 182, 212, .08); }
+.portrait-wrap { width: 100%; max-width: 385px; justify-self: end; position: relative; }
+.portrait-wrap::before, .portrait-wrap::after { content: ''; position: absolute; width: 29px; height: 29px; pointer-events: none; z-index: 2; }
+.portrait-wrap::before { right: -8px; top: -8px; border-right: 4px solid #00cfe1; border-top: 4px solid #00cfe1; }
+.portrait-wrap::after { left: -8px; bottom: -8px; border-left: 4px solid #326dfb; border-bottom: 4px solid #326dfb; }
+.profile-img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center 30%; border-radius: 4px; border: 1px solid rgba(255, 255, 255, .12); background: #151a23; }
+@media (max-width: 950px) {
+  .hero { gap: 44px; grid-template-columns: 1fr .88fr; }
+  .hero h1 { font-size: clamp(42px, 6.4vw, 65px); }
+}
+@media (max-width: 740px) {
+  .hero { display: flex; flex-direction: column; align-items: stretch; gap: 40px; min-height: 0; padding-top: 72px; padding-bottom: 87px; scroll-margin-top: 68px; }
+  .hero h1 { font-size: clamp(43px, 9vw, 64px); line-height: 1.12; margin: 25px 0 23px; }
+  .hero-description { font-size: 15px; max-width: 550px; }
+  .portrait-wrap { width: min(84%, 360px); align-self: center; margin-top: 15px; max-width: none; }
+}
+@media (max-width: 390px) {
+  .hero h1 { font-size: 40px; }
+  .btn { min-height: 44px; font-size: 12px; padding: 0 16px; }
+  .portrait-wrap { width: 92%; }
+}
+</style>
+</file>
+
+<file path="src/views/SkillsView.vue">
+<script setup>
+const skills = ['JavaScript', 'Vue.js', 'Node.js', 'Express', 'Python', 'Flask', 'MySQL', 'HTML & CSS', 'Git & GitHub']
+</script>
+
+<template>
+  <section id="skills" class="section">
+    <div class="container">
+      <span class="kicker">My toolkit</span>
+      <h2>Skills &amp; technologies.</h2>
+      <p>Tools and technologies I've been learning and using to build modern applications.</p>
+      <div class="skills">
+        <span v-for="skill in skills" :key="skill" class="skill-chip">{{ skill }}</span>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.skill-chip { border: 1px solid rgba(89, 121, 185, .27); border-radius: 7px; padding: 10px 15px; background: #161f32; font-size: 13px; font-weight: 600; color: #d7e2f5; }
+</style>
+</file>
+
+<file path="src/App.vue">
+<script setup>
+import { RouterView } from 'vue-router'
+import TheHeader from '@/components/TheHeader.vue'
+import TheFooter from '@/components/TheFooter.vue'
+</script>
+
+<template>
+  <TheHeader />
+  <main>
+    <RouterView />
+  </main>
+  <TheFooter />
+</template>
+</file>
+
+<file path="src/main.js">
+import './assets/main.css'
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+const app = createApp(App)
+
+app.use(router)
+
+app.mount('#app')
+</file>
+
+<file path="index.html">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam Jattiem - Portfolio</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+</file>
+
+<file path="README.md">
+# Portfolio-V2
+
+This template should help get you started developing with Vue 3 in Vite.
+
+## Recommended IDE Setup
+
+[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+
+## Recommended Browser Setup
+
+- Chromium-based browsers (Chrome, Edge, Brave, etc.):
+  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
+- Firefox:
+  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vite.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
+</file>
+
+<file path="src/views/ProjectsView.vue">
+<script setup>
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
+import { projects } from '@/data/projects'
+
+const expanded = reactive({})
+const teamExpanded = reactive({})
+const currentIndex = ref(0)
+const isMobile = ref(false)
+const viewport = ref(null)
+const viewportWidth = ref(0)
+const visibleCount = computed(() => isMobile.value ? 1 : 2)
+const maxIndex = computed(() => projects.length - visibleCount.value)
+const offset = computed(() => currentIndex.value * (viewportWidth.value + (isMobile.value ? 14 : 22)) / visibleCount.value)
+const counter = computed(() => {
+  const first = currentIndex.value + 1
+  return `${first}${isMobile.value ? '' : `–${first + 1}`} of ${projects.length}`
+})
+let mediaQuery
+let resizeObserver
+
+function updateLayout() {
+  isMobile.value = mediaQuery.matches
+  currentIndex.value = Math.min(currentIndex.value, maxIndex.value)
+  viewportWidth.value = viewport.value.clientWidth
+}
+
+function move(direction) {
+  currentIndex.value = Math.min(maxIndex.value, Math.max(0, currentIndex.value + direction))
+}
+
+onMounted(() => {
+  mediaQuery = window.matchMedia('(max-width: 740px)')
+  mediaQuery.addEventListener('change', updateLayout)
+  resizeObserver = new ResizeObserver(updateLayout)
+  resizeObserver.observe(viewport.value)
+  updateLayout()
+})
+
+onUnmounted(() => {
+  mediaQuery?.removeEventListener('change', updateLayout)
+  resizeObserver?.disconnect()
+})
+</script>
+
+<template>
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="projects-header">
+        <div>
+          <span class="kicker">Selected work</span>
+          <h2>Projects I've worked on.</h2>
+        </div>
+        <div class="carousel-controls" role="group" aria-label="Project carousel controls">
+          <button type="button" class="carousel-arrow" aria-label="Previous projects" :disabled="currentIndex === 0" @click="move(-1)">&larr;</button>
+          <span class="carousel-count" aria-live="polite">{{ counter }}</span>
+          <button type="button" class="carousel-arrow" aria-label="Next projects" :disabled="currentIndex === maxIndex" @click="move(1)">&rarr;</button>
+        </div>
+      </div>
+      <div ref="viewport" class="carousel-viewport" role="region" aria-label="Projects carousel" aria-roledescription="carousel">
+        <div class="projects-list" :style="{ transform: `translateX(-${offset}px)` }">
+          <article v-for="(project, index) in projects" :key="project.id" class="project-card"
+            :inert="index < currentIndex || index >= currentIndex + visibleCount"
+            :aria-hidden="index < currentIndex || index >= currentIndex + visibleCount"
+            :aria-label="project.title">
+            <img :src="project.image" :alt="project.alt" class="project-image" loading="lazy">
+            <span class="project-type">{{ project.type }}</span>
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-intro">{{ project.intro }}</p>
+            <div class="project-details">
+              <button type="button" class="read-more-btn" :aria-expanded="!!expanded[project.id]" :aria-controls="`${project.id}-description`" @click="expanded[project.id] = !expanded[project.id]">
+                {{ expanded[project.id] ? 'Show Less \u2191' : 'Read More \u2193' }}
+              </button>
+              <div v-show="expanded[project.id]" :id="`${project.id}-description`" class="project-description">
+                <p v-for="paragraph in project.description" :key="paragraph">{{ paragraph }}</p>
+              </div>
+            </div>
+            <div class="project-tech" aria-label="Technologies">
+              <span v-for="tech in project.tech" :key="tech">{{ tech }}</span>
+            </div>
+            <div v-if="project.team" class="project-team" :class="{ 'team-expanded': teamExpanded[project.id] }">
+              <div class="team-heading">
+                <strong>Team</strong>
+                <button type="button" class="team-toggle" :aria-expanded="!!teamExpanded[project.id]" :aria-controls="`${project.id}-team`"
+                  :aria-label="teamExpanded[project.id] ? 'Show less about the project team' : 'Read more about the project team'"
+                  @click="teamExpanded[project.id] = !teamExpanded[project.id]">
+                  {{ teamExpanded[project.id] ? 'Show Less \u2191' : 'Read More \u2193' }}
+                </button>
+              </div>
+              <div :id="`${project.id}-team`" class="team-members"><em>{{ project.team }}</em></div>
+            </div>
+            <div class="project-links">
+              <a v-for="link in project.links" :key="link.url" :href="link.url" class="project-link" target="_blank" rel="noopener noreferrer">
+                {{ link.label }} <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.projects-header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 27px; }
+.projects-header h2 { margin-bottom: 0; }
+.carousel-controls { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.carousel-count { min-width: 66px; text-align: center; font-size: 12px; color: #9ba8bc; font-weight: 700; }
+.carousel-arrow { appearance: none; background: #152744; border: 1px solid #2c5aa8; color: #f8faff; border-radius: 8px; width: 44px; height: 44px; display: inline-flex; justify-content: center; align-items: center; font-size: 23px; font-weight: 500; line-height: 1; padding: 15px 30px; transition: background .2s; }
+.carousel-arrow:hover:not(:disabled), .carousel-arrow:focus-visible { background: #2563eb; }
+.carousel-arrow:disabled { opacity: .35; cursor: not-allowed; }
+.carousel-viewport { width: 100%; overflow: hidden; }
+.projects-list { display: flex; gap: 22px; align-items: stretch; margin-top: 29px; transition: transform .4s ease; }
+.project-card { flex: 0 0 calc((100% - 22px) / 2); min-width: 0; border: 1px solid rgba(57, 108, 215, .27); border-radius: 10px; padding: 15px 18px; background: linear-gradient(135deg, #182337, #141d2d); display: flex; flex-direction: column; }
+.project-image { display: block; width: 100%; height: clamp(115px, 15vw, 185px); object-fit: cover; object-position: center; border: 1px solid rgba(125, 160, 220, .25); margin: 0 0 13px; border-radius: 8px; }
+.project-type { font-size: 9px; color: #4190ff; font-weight: 800; letter-spacing: .08em; }
+.project-title { font-size: clamp(17px, 1.6vw, 22px); line-height: 1.2; font-weight: 600; letter-spacing: -.035em; margin: 7px 0 9px; color: #f7faff; }
+.project-card .project-intro { font-size: 12px; line-height: 1.48; margin: 0 0 7px; color: #aab9d1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.read-more-btn { display: inline-flex; align-items: center; color: #54a2ff; font-size: 12px; font-weight: 800; background: none; border: 0; padding: 0; margin: 1px 0 8px; line-height: inherit; }
+.project-description p { font-size: 12px; line-height: 1.55; margin: 0 0 10px; }
+.project-tech { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 7px 0 9px; }
+.project-tech span { color: #4994ff; font-size: 10px; font-weight: 750; }
+.project-tech span:not(:last-child)::after { content: '\2022'; padding-left: 6px; color: #5287da; }
+.project-team { margin: 0 0 10px; color: #aab9d1; font-size: 11px; line-height: 1.45; }
+.team-heading { display: inline; }
+.team-heading strong { color: #e9f1ff; }
+.team-heading strong::after { content: ':'; }
+.team-members { display: inline; }
+.team-toggle { display: none; }
+.project-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+.project-link { display: inline-flex; align-items: center; gap: 12px; border-radius: 6px; border: 1px solid #2563eb; background: #10376b; color: #fff; font-weight: 800; font-size: 11px; padding: 8px 12px; transition: background .2s, transform .2s; }
+.project-link:hover { background: #2563eb; transform: translateY(-2px); }
+@media (max-width: 921px) { .carousel-arrow { padding: 14px 28px; } }
+@media (max-width: 740px) {
+  .projects-list { gap: 14px; }
+  .project-card { flex-basis: 100%; }
+  .project-team { margin-bottom: 12px; }
+  .team-heading { display: flex; align-items: center; gap: 12px; }
+  .team-toggle { display: inline-flex; align-items: center; border: 0; background: none; padding: 3px 0; font: inherit; font-weight: 800; font-size: 11px; color: #54a2ff; }
+  .team-members { display: none; line-height: 1.6; padding-top: 7px; }
+  .team-expanded .team-members { display: block; }
+}
+@media (max-width: 640px) {
+  .projects-header { align-items: center; gap: 10px; flex-wrap: wrap; }
+  .carousel-controls { margin-left: auto; }
+  .carousel-arrow { width: 37px; height: 37px; }
+  .project-card { padding: 10px; }
+  .project-image { height: 100px; }
+  .project-title { font-size: 14px; overflow-wrap: anywhere; }
+  .project-tech span { font-size: 9px; }
+  .project-link { padding: 7px 9px; font-size: 10px; }
+}
+@media (max-width: 544px) { .carousel-arrow { padding: 12px 24px; } }
+</style>
+</file>
+
+</files>
