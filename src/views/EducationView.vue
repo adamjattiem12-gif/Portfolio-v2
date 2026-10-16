@@ -52,15 +52,16 @@
 </template>
 
 <style scoped>
-.education-content { width: 100%; overflow-x: auto; margin-top: 30px; border: 1px solid rgba(132, 159, 204, .18); border-radius: 11px; background: #1b2331; }
+.education-content { width: 100%; overflow-x: auto; margin-top: 30px; border: 1px solid #39546f; border-radius: 11px; background: var(--panel); }
 .education-table { border-collapse: collapse; width: 100%; min-width: 740px; text-align: left; margin: 0 0 1.5em; }
-.education-table thead { background: #1a3150; }
+.education-table thead { background: #294563; }
 .education-table th { padding: 21px 22px; color: #f7faff; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; border-bottom: 2px solid #2872f0; }
-.education-table td { padding: 20px 22px; color: #b5c3d5; font-size: 13px; line-height: 1.5; }
-.education-table .institution-cell { color: #3485ff; font-weight: 700; }
+.education-table th { border-bottom-color: var(--accent); }
+.education-table td { padding: 20px 22px; color: #cddae9; font-size: 13px; line-height: 1.5; }
+.education-table .institution-cell { color: #9dc7fb; font-weight: 700; }
 .institution-cell a { color: inherit; }
 .institution-cell a:hover { text-decoration: underline; }
-.education-table tbody tr:hover { background: rgba(54, 112, 198, .07); }
+.education-table tbody tr:hover { background: rgba(86,148,232,.09); }
 @media (max-width: 800px) {
   .education-table th, .education-table td { padding: 15px 17px; font-size: 12px; }
   .education-content { margin-top: 23px; }

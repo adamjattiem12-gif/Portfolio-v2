@@ -56,19 +56,19 @@ onUnmounted(() => {
           <button type="button" class="carousel-arrow" aria-label="Next projects" :disabled="currentIndex === maxIndex" @click="move(1)">&rarr;</button>
         </div>
       </div>
-      <div ref="viewport" class="carousel-viewport" role="region" aria-label="Projects carousel" aria-roledescription="carousel">
+      <div ref="viewport" class="carousel-viewport" role="region" aria-label="Projects carousel" aria-roledescription="carousel" tabindex="0" @keydown.left.self.prevent="move(-1)" @keydown.right.self.prevent="move(1)" @keydown.home.self.prevent="currentIndex = 0" @keydown.end.self.prevent="currentIndex = maxIndex">
         <div class="projects-list" :style="{ transform: `translateX(-${offset}px)` }">
           <article v-for="(project, index) in projects" :key="project.id" class="project-card"
             :inert="index < currentIndex || index >= currentIndex + visibleCount"
             :aria-hidden="index < currentIndex || index >= currentIndex + visibleCount"
-            :aria-label="project.title">
-            <img :src="project.image" :alt="project.alt" class="project-image" loading="lazy">
+            :aria-label="`${project.title}, ${index + 1} of ${projects.length}`" aria-roledescription="slide">
+            <img :src="project.image" :alt="project.alt" :width="project.imageWidth" :height="project.imageHeight" class="project-image" loading="lazy" decoding="async">
             <span class="project-type">{{ project.type }}</span>
             <h3 class="project-title">{{ project.title }}</h3>
             <p class="project-intro">{{ project.intro }}</p>
             <div class="project-details">
               <button type="button" class="read-more-btn" :aria-expanded="!!expanded[project.id]" :aria-controls="`${project.id}-description`" @click="expanded[project.id] = !expanded[project.id]">
-                {{ expanded[project.id] ? 'Show Less \u2191' : 'Read More \u2193' }}
+                {{ expanded[project.id] ? 'Show Less ↑' : 'Read More ↓' }}
               </button>
               <div v-show="expanded[project.id]" :id="`${project.id}-description`" class="project-description">
                 <p v-for="paragraph in project.description" :key="paragraph">{{ paragraph }}</p>
@@ -83,7 +83,7 @@ onUnmounted(() => {
                 <button type="button" class="team-toggle" :aria-expanded="!!teamExpanded[project.id]" :aria-controls="`${project.id}-team`"
                   :aria-label="teamExpanded[project.id] ? 'Show less about the project team' : 'Read more about the project team'"
                   @click="teamExpanded[project.id] = !teamExpanded[project.id]">
-                  {{ teamExpanded[project.id] ? 'Show Less \u2191' : 'Read More \u2193' }}
+                  {{ teamExpanded[project.id] ? 'Show Less ↑' : 'Read More ↓' }}
                 </button>
               </div>
               <div :id="`${project.id}-team`" class="team-members"><em>{{ project.team }}</em></div>
@@ -105,31 +105,38 @@ onUnmounted(() => {
 .projects-header h2 { margin-bottom: 0; }
 .carousel-controls { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 .carousel-count { min-width: 66px; text-align: center; font-size: 12px; color: #9ba8bc; font-weight: 700; }
-.carousel-arrow { appearance: none; background: #152744; border: 1px solid #2c5aa8; color: #f8faff; border-radius: 8px; width: 44px; height: 44px; display: inline-flex; justify-content: center; align-items: center; font-size: 23px; font-weight: 500; line-height: 1; padding: 15px 30px; transition: background .2s; }
-.carousel-arrow:hover:not(:disabled), .carousel-arrow:focus-visible { background: #2563eb; }
+.carousel-arrow { appearance: none; background: var(--panel); border: 1px solid #496787; color: var(--text); border-radius: 8px; width: 62px; height: 44px; display: inline-flex; justify-content: center; align-items: center; font-size: 23px; font-weight: 500; line-height: 1; padding: 0; transition: transform .22s var(--motion-ease), background .22s, box-shadow .22s; }
+.carousel-arrow:hover:not(:disabled), .carousel-arrow:focus-visible { background: var(--button); }
+.carousel-arrow:hover:not(:disabled) { transform: translateY(-2px); }
 .carousel-arrow:disabled { opacity: .35; cursor: not-allowed; }
-.carousel-viewport { width: 100%; overflow: hidden; }
-.projects-list { display: flex; gap: 22px; align-items: stretch; margin-top: 29px; transition: transform .4s ease; }
-.project-card { flex: 0 0 calc((100% - 22px) / 2); min-width: 0; border: 1px solid rgba(57, 108, 215, .27); border-radius: 10px; padding: 15px 18px; background: linear-gradient(135deg, #182337, #141d2d); display: flex; flex-direction: column; }
-.project-image { display: block; width: 100%; height: clamp(115px, 15vw, 185px); object-fit: cover; object-position: center; border: 1px solid rgba(125, 160, 220, .25); margin: 0 0 13px; border-radius: 8px; }
-.project-type { font-size: 9px; color: #4190ff; font-weight: 800; letter-spacing: .08em; }
+.carousel-viewport { width: 100%; overflow: hidden; padding-top: 5px; padding-bottom: 18px; margin-bottom: -18px; }
+.projects-list { display: flex; gap: 22px; align-items: stretch; margin-top: 24px; transition: transform 500ms var(--motion-ease); }
+.project-card { flex: 0 0 calc((100% - 22px) / 2); min-width: 0; border: 1px solid #385573; border-radius: 12px; padding: 15px 18px; background: var(--panel); display: flex; flex-direction: column; transition: transform .3s var(--motion-ease), border-color .25s, box-shadow .3s; }
+.project-card:focus-within { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(86,148,232,.19); }
+.project-image { display: block; width: 100%; height: clamp(115px, 15vw, 185px); object-fit: contain; object-position: center; margin: 0 0 13px; border-radius: 8px; }
+.project-type { font-size: 9px; color: #88b9f4; font-weight: 800; letter-spacing: .08em; }
 .project-title { font-size: clamp(17px, 1.6vw, 22px); line-height: 1.2; font-weight: 600; letter-spacing: -.035em; margin: 7px 0 9px; color: #f7faff; }
-.project-card .project-intro { font-size: 12px; line-height: 1.48; margin: 0 0 7px; color: #aab9d1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.read-more-btn { display: inline-flex; align-items: center; color: #54a2ff; font-size: 12px; font-weight: 800; background: none; border: 0; padding: 0; margin: 1px 0 8px; line-height: inherit; }
-.project-description p { font-size: 12px; line-height: 1.55; margin: 0 0 10px; }
+.project-card .project-intro { font-size: 12px; line-height: 1.48; margin: 0 0 7px; color: #c2d0e0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.read-more-btn { display: inline-flex; align-items: center; color: #94c5ff; font-size: 12px; font-weight: 800; background: none; border: 0; padding: 0; margin: 1px 0 8px; line-height: inherit; }
+.project-description p { font-size: 12px; line-height: 1.55; margin: 0 0 10px; color: #c2d0e0; }
 .project-tech { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 7px 0 9px; }
-.project-tech span { color: #4994ff; font-size: 10px; font-weight: 750; }
+.project-tech span { color: #88b9f4; font-size: 10px; font-weight: 750; }
 .project-tech span:not(:last-child)::after { content: '\2022'; padding-left: 6px; color: #5287da; }
 .project-team { margin: 0 0 10px; color: #aab9d1; font-size: 11px; line-height: 1.45; }
 .team-heading { display: inline; }
 .team-heading strong { color: #e9f1ff; }
 .team-heading strong::after { content: ':'; }
 .team-members { display: inline; }
+.team-members em { font-synthesis: style; }
+.team-heading strong::after { white-space: pre; content: ': '; }
 .team-toggle { display: none; }
 .project-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
-.project-link { display: inline-flex; align-items: center; gap: 12px; border-radius: 6px; border: 1px solid #2563eb; background: #10376b; color: #fff; font-weight: 800; font-size: 11px; padding: 8px 12px; transition: background .2s, transform .2s; }
-.project-link:hover { background: #2563eb; transform: translateY(-2px); }
-@media (max-width: 921px) { .carousel-arrow { padding: 14px 28px; } }
+.project-link { display: inline-flex; align-items: center; gap: 12px; border-radius: 6px; border: 1px solid #5084cb; background: #2c5d9d; color: #fff; font-weight: 800; font-size: 11px; padding: 8px 12px; transition: background .22s, transform .22s var(--motion-ease), box-shadow .22s; }
+.project-link:hover { background: var(--button); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(6,13,28,.27); }
+.project-link span { transition: transform .22s var(--motion-ease); }
+.project-link:hover span { transform: translateX(3px); }
+@media (hover: hover) and (pointer: fine) { .project-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 19px 35px rgba(3,10,24,.27); } }
+@media (max-width: 921px) { .carousel-arrow { width: 58px; } }
 @media (max-width: 740px) {
   .projects-list { gap: 14px; }
   .project-card { flex-basis: 100%; }
@@ -142,12 +149,13 @@ onUnmounted(() => {
 @media (max-width: 640px) {
   .projects-header { align-items: center; gap: 10px; flex-wrap: wrap; }
   .carousel-controls { margin-left: auto; }
-  .carousel-arrow { width: 37px; height: 37px; }
+  .carousel-arrow { width: 58px; height: 37px; }
   .project-card { padding: 10px; }
   .project-image { height: 100px; }
   .project-title { font-size: 14px; overflow-wrap: anywhere; }
   .project-tech span { font-size: 9px; }
   .project-link { padding: 7px 9px; font-size: 10px; }
 }
-@media (max-width: 544px) { .carousel-arrow { padding: 12px 24px; } }
+@media (max-width: 544px) { .carousel-arrow { width: 50px; } }
+@media (prefers-reduced-motion: reduce) { .project-card:hover, .project-link:hover, .carousel-arrow:hover:not(:disabled) { transform: none; } }
 </style>
