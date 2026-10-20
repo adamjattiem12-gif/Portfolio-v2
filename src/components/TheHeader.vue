@@ -56,7 +56,7 @@ onUnmounted(() => {
     <div class="container header-content">
       <a class="logo" href="#top" aria-label="Adam Jattiem, back to top" @click="closeMenu">ADAM <strong>JATTIEM</strong></a>
       <nav class="nav" aria-label="Main navigation">
-        <a v-for="link in links" :key="link.id" :href="`#${link.id}`" :class="{ 'nav-cta': link.id === 'contact' }" :aria-current="activeSection === link.id ? 'location' : undefined">{{ link.label }}</a>
+        <a v-for="link in links" :key="link.id" :href="`#${link.id}`" :aria-current="activeSection === link.id ? 'location' : undefined">{{ link.label }}</a>
       </nav>
       <details ref="mobileMenu" class="mobile-nav" @keydown.esc="escapeMenu" @toggle="menuOpen = $event.target.open">
         <summary :aria-label="menuOpen ? 'Close navigation menu' : 'Open navigation menu'" :aria-expanded="menuOpen" aria-controls="mobile-menu">&#9776;</summary>
@@ -76,12 +76,9 @@ onUnmounted(() => {
 .nav { display: flex; align-items: center; gap: 32px; }
 .nav a { position: relative; font-size: 12px; font-weight: 600; color: #e7f0fa; transition: color .2s; }
 .nav a:hover, .nav a:focus-visible { color: #8eb9f4; }
-.nav a:not(.nav-cta)::after { content: ''; position: absolute; left: 0; right: 0; bottom: -10px; height: 2px; background: #83b7fa; border-radius: 3px; transform: scaleX(0); transition: transform .24s var(--motion-ease); }
+.nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -10px; height: 2px; background: #83b7fa; border-radius: 3px; transform: scaleX(0); transition: transform .24s var(--motion-ease); }
 .nav a:hover::after, .nav a:focus-visible::after, .nav a[aria-current]::after { transform: scaleX(1); }
 .nav a[aria-current], .mobile-menu a[aria-current] { color: #a5cdff; }
-.nav .nav-cta { color: #101827; background: var(--accent); border-radius: 6px; padding: 11px 19px; box-shadow: 0 5px 24px rgba(37, 99, 235, .2); }
-.nav .nav-cta[aria-current] { box-shadow: 0 0 0 2px rgba(147,194,255,.7); }
-.nav .nav-cta:hover { background: #4786db; color: #fff; }
 .mobile-nav { display: none; }
 @media (max-width: 950px) { .nav { gap: 18px; } }
 @media (max-width: 740px) {
