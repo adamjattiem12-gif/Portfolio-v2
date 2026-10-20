@@ -50,7 +50,7 @@
 .form-group input, .form-group textarea { display: block; width: 100%; max-width: 100%; background: var(--background); color: var(--text); border: 1px solid #45617f; border-radius: 7px; font-size: 14px; line-height: 1.5; padding: 12px 14px; box-shadow: none; transition: border-color .2s, box-shadow .2s, background .2s; }
 .form-group textarea { min-height: 140px; resize: vertical; }
 .form-group input { height: 40px; }
-.form-group input:focus, .form-group textarea:focus { border-color: var(--accent); outline: 2px solid rgba(37,99,235,.25); box-shadow: 0 0 0 3px rgba(86,148,232,.18); }
+.form-group input:focus, .form-group textarea:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(86,148,232,.18); }
 .submit-btn { background: var(--button); color: #fff; border: 0; border-radius: 9px; font-size: 14px; font-weight: 800; line-height: 1; min-height: 46px; padding: 0 25px; transition: transform .22s var(--motion-ease), background .22s, box-shadow .22s; }
 .submit-btn:hover { background: #4786db; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(6,13,28,.27); }
 @media (min-width: 741px) and (max-width: 1050px) {

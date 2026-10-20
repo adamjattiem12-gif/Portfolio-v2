@@ -79,7 +79,7 @@ onUnmounted(() => {
 .nav a:not(.nav-cta)::after { content: ''; position: absolute; left: 0; right: 0; bottom: -10px; height: 2px; background: #83b7fa; border-radius: 3px; transform: scaleX(0); transition: transform .24s var(--motion-ease); }
 .nav a:hover::after, .nav a:focus-visible::after, .nav a[aria-current]::after { transform: scaleX(1); }
 .nav a[aria-current], .mobile-menu a[aria-current] { color: #a5cdff; }
-.nav .nav-cta { color: #fff; background: var(--button); border-radius: 6px; padding: 11px 19px; box-shadow: 0 5px 24px rgba(37, 99, 235, .2); }
+.nav .nav-cta { color: #101827; background: var(--accent); border-radius: 6px; padding: 11px 19px; box-shadow: 0 5px 24px rgba(37, 99, 235, .2); }
 .nav .nav-cta[aria-current] { box-shadow: 0 0 0 2px rgba(147,194,255,.7); }
 .nav .nav-cta:hover { background: #4786db; color: #fff; }
 .mobile-nav { display: none; }
