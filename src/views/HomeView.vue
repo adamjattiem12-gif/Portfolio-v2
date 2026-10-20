@@ -23,7 +23,7 @@ useScrollReveal(page)
       </div>
     </div>
     <div class="portrait-wrap">
-      <img class="profile-img" src="/wordpress/profile.jpeg" alt="Portrait of Adam Jattiem" loading="eager" width="768" height="1024">
+      <img class="profile-img" src="/Isolated%20Young%20Man%20in%20Navy%20Sweatshirt.png" alt="Portrait of Adam Jattiem" loading="eager" width="1299" height="1211">
     </div>
   </section>
   <AboutView />
@@ -54,11 +54,21 @@ useScrollReveal(page)
 .btn-primary:hover { background: #4786db; }
 .btn-outline { border: 1px solid var(--sunset); color: var(--sunset); background: rgba(16,24,39,.25); }
 .btn-outline:hover { background: rgba(232,214,207,.1); }
-.portrait-wrap { width: 100%; max-width: 385px; justify-self: end; position: relative; }
-.portrait-wrap::before, .portrait-wrap::after { content: ''; position: absolute; width: 29px; height: 29px; pointer-events: none; z-index: 2; }
-.portrait-wrap::before { right: -8px; top: -8px; border-right: 4px solid #00cfe1; border-top: 4px solid #00cfe1; }
-.portrait-wrap::after { left: -8px; bottom: -8px; border-left: 4px solid #326dfb; border-bottom: 4px solid #326dfb; }
-.profile-img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center 30%; background: #151a23; }
+.portrait-wrap { width: 100%; max-width: 430px; justify-self: end; position: relative; top: -30px; }
+.profile-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center bottom;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  filter: drop-shadow(0 8px 16px rgba(9, 16, 30, 0.12)) drop-shadow(0 24px 30px rgba(9, 16, 30, 0.12));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 70%, rgba(0, 0, 0, 0.94) 76%, rgba(0, 0, 0, 0.53) 89%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 70%, rgba(0, 0, 0, 0.94) 76%, rgba(0, 0, 0, 0.53) 89%, transparent 100%);
+}
 @media (max-width: 950px) {
   .hero { gap: 44px; grid-template-columns: 1fr .88fr; }
   .hero h1 { font-size: clamp(42px, 6.4vw, 65px); }
@@ -68,7 +78,7 @@ useScrollReveal(page)
   .hero { display: flex; flex-direction: column; align-items: stretch; gap: 40px; min-height: 0; padding: 72px 22px 80px; scroll-margin-top: 68px; background-position: 57% center; background-image: linear-gradient(90deg, rgba(9,16,30,.62) 0%, rgba(9,16,30,.35) 62%, rgba(9,16,30,.17) 100%), linear-gradient(to bottom, rgba(16,24,39,.03) 0%, rgba(16,24,39,.08) 51%, rgba(16,24,39,.62) 87%, #101827 100%), url('/wordpress/mountain-sunset.jpg'); }
   .hero h1 { font-size: clamp(43px, 9vw, 64px); line-height: 1.12; margin: 25px 0 23px; }
   .hero-description { font-size: 15px; max-width: 550px; }
-  .portrait-wrap { width: min(84%, 360px); align-self: center; margin-top: 15px; max-width: none; }
+  .portrait-wrap { width: min(88%, 390px); align-self: center; margin-top: 15px; max-width: none; top: -14px; }
 }
 @media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
 @media (max-width: 390px) {
