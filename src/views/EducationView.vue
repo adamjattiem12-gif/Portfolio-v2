@@ -3,6 +3,65 @@ import { ref } from 'vue'
 
 const isFormalExpanded = ref(true)
 const isCiscoExpanded = ref(false)
+
+const panelAnimations = new WeakMap()
+
+function clearPanelStyles(element) {
+  element.style.removeProperty('height')
+  element.style.removeProperty('opacity')
+  element.style.removeProperty('overflow')
+}
+
+function cancelPanelTransition(element) {
+  const animation = panelAnimations.get(element)
+  if (!animation) return
+
+  // Freeze the visible frame so a reversed transition starts without a jump.
+  const height = element.getBoundingClientRect().height
+  const opacity = getComputedStyle(element).opacity
+  animation.onfinish = null
+  animation.cancel()
+  panelAnimations.delete(element)
+  element.style.height = `${height}px`
+  element.style.opacity = opacity
+}
+
+function animatePanel(element, done, expanded) {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !element.animate) {
+    clearPanelStyles(element)
+    done()
+    return
+  }
+
+  const height = element.getBoundingClientRect().height
+  const startHeight = element.style.height ? height : expanded ? 0 : height
+  const startOpacity = element.style.opacity || (expanded ? '0' : '1')
+  const endHeight = expanded ? element.firstElementChild.getBoundingClientRect().height : 0
+
+  element.style.overflow = 'hidden'
+  const animation = element.animate(
+    [
+      { height: `${startHeight}px`, opacity: startOpacity },
+      { height: `${endHeight}px`, opacity: expanded ? '1' : '0' },
+    ],
+    { duration: 250, easing: 'ease-in-out', fill: 'both' },
+  )
+  panelAnimations.set(element, animation)
+  animation.onfinish = () => {
+    panelAnimations.delete(element)
+    animation.cancel()
+    clearPanelStyles(element)
+    done()
+  }
+}
+
+function expandPanel(element, done) {
+  animatePanel(element, done, true)
+}
+
+function collapsePanel(element, done) {
+  animatePanel(element, done, false)
+}
 </script>
 
 <template>
@@ -32,43 +91,47 @@ const isCiscoExpanded = ref(false)
           </button>
         </h3>
 
-        <div id="formal-content" v-show="isFormalExpanded" class="category-content">
-          <div class="education-timeline">
-            <article class="education-card timeline-card">
-              <p class="institution">Life Choices Academy</p>
-              <h4>Full Stack Development</h4>
-              <p class="description">Completed an intensive practical software development programme covering full-stack development, databases, teamwork and real-world projects.</p>
-              <dl class="education-meta">
-                <div><dt>Timeline</dt><dd>April 2026 – September 2026</dd></div>
-                <div><dt>Duration</dt><dd>6 months</dd></div>
-                <div><dt>NQF level</dt><dd>Not applicable</dd></div>
-              </dl>
-              <ul class="skill-tags" aria-label="Skills covered">
-                <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Vue.js</li><li>Node.js</li><li>Express.js</li><li>MySQL</li><li>Python</li><li>Git &amp; GitHub</li>
-              </ul>
-            </article>
+        <Transition :css="false" @enter="expandPanel" @leave="collapsePanel" @enter-cancelled="cancelPanelTransition" @leave-cancelled="cancelPanelTransition">
+          <div id="formal-content" v-show="isFormalExpanded" :inert="!isFormalExpanded" :aria-hidden="!isFormalExpanded">
+            <div class="category-content">
+              <div class="education-timeline">
+                <article class="education-card timeline-card">
+                  <p class="institution">Life Choices Academy</p>
+                  <h4>Full Stack Development</h4>
+                  <p class="description">Completed an intensive practical software development programme covering full-stack development, databases, teamwork and real-world projects.</p>
+                  <dl class="education-meta">
+                    <div><dt>Timeline</dt><dd>April 2026 – September 2026</dd></div>
+                    <div><dt>Duration</dt><dd>6 months</dd></div>
+                    <div><dt>NQF level</dt><dd>Not applicable</dd></div>
+                  </dl>
+                  <ul class="skill-tags" aria-label="Skills covered">
+                    <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Vue.js</li><li>Node.js</li><li>Express.js</li><li>MySQL</li><li>Python</li><li>Git &amp; GitHub</li>
+                  </ul>
+                </article>
 
-            <article class="education-card timeline-card">
-              <p class="institution">Academic qualification</p>
-              <h4>Higher Certificate in Islamic Studies</h4>
-              <dl class="education-meta">
-                <div><dt>Timeline</dt><dd>January 2025 – December 2025</dd></div>
-                <div><dt>Duration</dt><dd>1 year</dd></div>
-                <div><dt>NQF level</dt><dd>5</dd></div>
-              </dl>
-            </article>
+                <article class="education-card timeline-card">
+                  <p class="institution">Academic qualification</p>
+                  <h4>Higher Certificate in Islamic Studies</h4>
+                  <dl class="education-meta">
+                    <div><dt>Timeline</dt><dd>January 2025 – December 2025</dd></div>
+                    <div><dt>Duration</dt><dd>1 year</dd></div>
+                    <div><dt>NQF level</dt><dd>5</dd></div>
+                  </dl>
+                </article>
 
-            <article class="education-card timeline-card">
-              <p class="institution">High School</p>
-              <h4>NSC Diploma (High School)</h4>
-              <dl class="education-meta">
-                <div><dt>Timeline</dt><dd>January 2022 – December 2024</dd></div>
-                <div><dt>Duration</dt><dd>3 years</dd></div>
-                <div><dt>NQF level</dt><dd>4</dd></div>
-              </dl>
-            </article>
+                <article class="education-card timeline-card">
+                  <p class="institution">High School</p>
+                  <h4>NSC Diploma (High School)</h4>
+                  <dl class="education-meta">
+                    <div><dt>Timeline</dt><dd>January 2022 – December 2024</dd></div>
+                    <div><dt>Duration</dt><dd>3 years</dd></div>
+                    <div><dt>NQF level</dt><dd>4</dd></div>
+                  </dl>
+                </article>
+              </div>
+            </div>
           </div>
-        </div>
+        </Transition>
       </section>
 
       <section class="education-category cisco-category" aria-labelledby="cisco-heading">
@@ -92,39 +155,43 @@ const isCiscoExpanded = ref(false)
           </button>
         </h3>
 
-        <div id="cisco-content" v-show="isCiscoExpanded" class="category-content">
-          <div class="cisco-grid">
-            <article class="education-card cisco-card">
-              <div class="course-heading">
-                <div>
-                  <p class="institution">Cisco Networking Academy</p>
-                  <h4>Introduction to Data Science</h4>
-                </div>
-                <span class="completed"><span aria-hidden="true"></span>Completed</span>
-              </div>
-              <p class="description">Introductory knowledge of data science concepts and applications.</p>
-              <p class="course-timeline"><span>Timeline</span>April 2026 – September 2026</p>
-              <a class="credential-link" href="https://www.credly.com/badges/cd2bc1b9-5359-41f2-bf49-7bd1b87c09fb/public_url" target="_blank" rel="noopener noreferrer">
-                View Credential <span aria-hidden="true">↗</span>
-              </a>
-            </article>
+        <Transition :css="false" @enter="expandPanel" @leave="collapsePanel" @enter-cancelled="cancelPanelTransition" @leave-cancelled="cancelPanelTransition">
+          <div id="cisco-content" v-show="isCiscoExpanded" :inert="!isCiscoExpanded" :aria-hidden="!isCiscoExpanded">
+            <div class="category-content">
+              <div class="cisco-grid">
+                <article class="education-card cisco-card">
+                  <div class="course-heading">
+                    <div>
+                      <p class="institution">Cisco Networking Academy</p>
+                      <h4>Introduction to Data Science</h4>
+                    </div>
+                    <span class="completed"><span aria-hidden="true"></span>Completed</span>
+                  </div>
+                  <p class="description">Introductory knowledge of data science concepts and applications.</p>
+                  <p class="course-timeline"><span>Timeline</span>April 2026 – September 2026</p>
+                  <a class="credential-link" href="https://www.credly.com/badges/cd2bc1b9-5359-41f2-bf49-7bd1b87c09fb/public_url" target="_blank" rel="noopener noreferrer">
+                    View Credential <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
 
-            <article class="education-card cisco-card">
-              <div class="course-heading">
-                <div>
-                  <p class="institution">Cisco Networking Academy</p>
-                  <h4>Introduction to Cybersecurity</h4>
-                </div>
-                <span class="completed"><span aria-hidden="true"></span>Completed</span>
+                <article class="education-card cisco-card">
+                  <div class="course-heading">
+                    <div>
+                      <p class="institution">Cisco Networking Academy</p>
+                      <h4>Introduction to Cybersecurity</h4>
+                    </div>
+                    <span class="completed"><span aria-hidden="true"></span>Completed</span>
+                  </div>
+                  <p class="description">Introductory understanding of cybersecurity principles, threats and digital security.</p>
+                  <p class="course-timeline"><span>Timeline</span>April 2026 – September 2026</p>
+                  <a class="credential-link" href="https://www.credly.com/badges/b436120d-233d-4057-8e5e-eb0761f9d53a/public_url" target="_blank" rel="noopener noreferrer">
+                    View Credential <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
               </div>
-              <p class="description">Introductory understanding of cybersecurity principles, threats and digital security.</p>
-              <p class="course-timeline"><span>Timeline</span>April 2026 – September 2026</p>
-              <a class="credential-link" href="https://www.credly.com/badges/b436120d-233d-4057-8e5e-eb0761f9d53a/public_url" target="_blank" rel="noopener noreferrer">
-                View Credential <span aria-hidden="true">↗</span>
-              </a>
-            </article>
+            </div>
           </div>
-        </div>
+        </Transition>
       </section>
     </div>
   </section>
@@ -143,7 +210,7 @@ const isCiscoExpanded = ref(false)
 .category-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: 2px; }
 .category-name { color: #f5f8ff; font-size: clamp(16px, 1.8vw, 19px); font-weight: 700; line-height: 1.4; letter-spacing: -.02em; }
 .category-subtitle { color: var(--muted); font-size: 12px; font-weight: 500; line-height: 1.5; }
-.chevron { flex: 0 0 18px; width: 18px; height: 18px; stroke: #a9bfd8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transform: rotate(0); transition: transform .18s var(--motion-ease); }
+.chevron { flex: 0 0 18px; width: 18px; height: 18px; stroke: #a9bfd8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transform: rotate(0); transition: transform .25s ease-in-out; }
 .chevron.expanded { transform: rotate(180deg); }
 .category-content { padding-top: 15px; }
 .education-timeline { position: relative; display: grid; gap: 13px; margin-left: 8px; padding-left: 23px; }
