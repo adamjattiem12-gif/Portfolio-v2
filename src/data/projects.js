@@ -28,7 +28,7 @@ export const projects = [
     "links": [
       {
         "label": "Live Demo",
-        "url": "https://group-10-module-3-core-project-production-30a0.up.railway.app/"
+        "url": "https://foodboxx.onrender.com"
       },
       {
         "label": "GitHub",
