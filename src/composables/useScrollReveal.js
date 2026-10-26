@@ -27,7 +27,7 @@ export function useScrollReveal(root) {
 
   onMounted(() => {
     elements = Array.from(root.value.querySelectorAll(
-      '.section .kicker, .section h2, .section .container > p, .skill-chip, .carousel-viewport, .education-content, .contact-copy > p, .form-panel',
+      '.section .kicker, .section h2, .section .container > p, .skill-chip, .carousel-viewport, .education-category, .contact-copy > p, .form-panel',
     ))
     elements.forEach((element) => element.classList.add('reveal'))
     motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
