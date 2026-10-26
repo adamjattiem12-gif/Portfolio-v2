@@ -131,11 +131,12 @@ const isCiscoExpanded = ref(false)
 </template>
 
 <style scoped>
+.education-section { color-scheme: dark; }
 .education-section h2 { margin-bottom: 28px; }
 .education-category { max-width: 960px; margin: 0 auto; }
 .category-title { margin: 0; }
-.category-toggle { display: flex; width: 100%; min-height: 76px; align-items: center; gap: 14px; padding: 12px 16px; border: 1px solid #385573; border-radius: 12px; background: var(--panel); color: var(--text); text-align: left; cursor: pointer; transition: border-color .2s, background .2s; }
-.category-toggle:hover { border-color: #52769d; background: #243a55; }
+.category-toggle { -webkit-appearance: none; appearance: none; display: flex; width: 100%; min-height: 76px; align-items: center; gap: 14px; padding: 12px 16px; border: 0; border-radius: 6px; background: transparent; box-shadow: none; color: var(--text); text-align: left; cursor: pointer; transition: background .2s; }
+.category-toggle:hover { background: rgba(86, 148, 232, .06); }
 .category-icon { display: grid; flex: 0 0 36px; width: 36px; height: 36px; place-items: center; border: 1px solid rgba(86, 148, 232, .3); border-radius: 9px; background: rgba(86, 148, 232, .08); color: #9dc7fb; }
 .category-icon svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .cisco-icon { border-color: rgba(76, 190, 166, .25); background: rgba(76, 190, 166, .06); color: #73cbb9; }
